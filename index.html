@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SISSY BEAUTY STORE</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>SISSY BEAUTY STORE</h1>
+    </header>
+
+    <nav>
+      <a href="#homepage">Home Page</a>
+      <a href="#product">Product</a>
+      <a href="#about">About Us</a>
+      <a href="#" id="cart-toggle"
+        >Cart 🛒 <span class="cart-counter" id="cart-count">0</span></a
+      >
+      <a href="#" id="wishlist-toggle">❤️ Wishlist</a>
+      <a href="#" id="login-toggle">👤 Login</a>
+      <a href="#" id="logout-btn" style="display: none">🚪 Logout</a>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search products..."
+        oninput="searchProducts()"
+      />
+    </nav>
+    <section id="login-section" class="login-section">
+      <h2>Login to Your Account</h2>
+      <form id="login-form">
+        <label for="username">Your Name:</label>
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter your name"
+          required
+          class="login-input"
+        />
+        <button type="submit" class="btn login-button">Login</button>
+      </form>
+    </section>
+    <section id="homepage">
+      <h2>Welcome To Sissy Beauty Store!</h2>
+      <p>
+        Explore a complete range of beauty essentials designed to elevate your
+        look — from flawless face makeup and vibrant lip colors to stunning eye
+        enhancements. Everything you need for a confident and radiant style is
+        right here. Shop now!
+      </p>
+    </section>
+
+    <section class="filter-section">
+      <label for="filter">Filter by Category:</label>
+      <select id="filter" onchange="filterProducts(this.value)">
+        <option value="all">All</option>
+        <option value="lips">Lips</option>
+        <option value="face">Face</option>
+        <option value="eyes">Eyes</option>
+      </select>
+    </section>
+    <section id="promo" class="promo-section">
+      <h2 class="pink-heading">🔥 Today's Sale!</h2>
+      <p class="promo-text">Get a 20% discount on concealer products 💖</p>
+    </section>
+    <section id="product" class="product">
+      <div class="card" data-kategori="lips">
+        <img src="image/liptint.jpg" alt="Lip Tint Sissy" />
+        <h3>Lip Tint Sissy</h3>
+        <p>Rp 60.000</p>
+        <p class="desc">
+          A lip tint with natural and long-lasting, it keeps your lips looking
+          fresh all day long.
+        </p>
+        <div class="button-group">
+          <button class="btn" onclick="addToCart('Lip Tint Sissy', 60000)">
+            Buy
+          </button>
+          <button class="btn" onclick="addToWishlist('Lip Tint Sissy')">
+            ❤️ Wishlist
+          </button>
+        </div>
+      </div>
+      <div class="card new" data-kategori="lips">
+        <span class="badge-new">NEW</span>
+        <img src="image/lipgloss.jpg" alt="Lip Gloss Sissy" />
+        <h3>Lip Gloss Sissy</h3>
+        <p>Rp 75.000</p>
+        <p class="desc">
+          Shiny and smooth lip gloss that gives your lips a fuller look.
+        </p>
+        <div class="button-group">
+          <button class="btn" onclick="addToCart('Lip Gloss Sissy', 75000)">
+            Buy
+          </button>
+          <button class="btn" onclick="addToWishlist('Lip Gloss Sissy')">
+            ❤️ Wishlist
+          </button>
+        </div>
+      </div>
+      <div class="card" data-kategori="lips">
+        <img src="image/matte lip.jpg" alt="Matte Lipstick Sissy" />
+        <h3>Matte Lipstick Sissy</h3>
+        <p>Rp 68.000</p>
+        <p class="desc">
+          Bold color with matte finish and comfortable all-day wear.
+        </p>
+        <div class="button-group">
+          <button
+            class="btn"
+            onclick="addToCart('Matte Lipstick Sissy', 68000)"
+          >
+            Buy
+          </button>
+          <button class="btn" onclick="addToWishlist('Matte Lipstick Sissy')">
+            ❤️ Wishlist
+          </button>
+        </div>
+      </div>
+      <div class="card new" data-kategori="lips">
+        <span class="badge-new">NEW</span>
+        <img src="image/lipbalm.jpg" alt="Lip Balm Sissy" />
+        <h3>Lip Balm Sissy</h3>
+        <p>Rp 78.000</p>
+        <p class="desc">
+          Hydrating balm to keep lips soft and nourished all day.
+        </p>
+        <div class="button-group">
+          <button class="btn" onclick="addToCart('Lip Balm Sissy', 78000)">
+            Buy
+          </button>
+          <button class="btn" onclick="addToWishlist('Lip Balm Sissy')">
+            ❤️ Wishlist
+          </button>
+        </div>
+      </div>
+      <div class="card" data-kategori="face">
+        <img src="image/cushion.jpg" alt="Cushion Sissy" />
+        <h3>Cushion Sissy</h3>
+        <p>Rp 85.000</p>
+        <p class="desc">
+          A cushion with a dewy finish and medium coverage that is lightweight
+          on the face.
+        </p>
+        <div class="button-group">
+          <button class="btn" onclick="openShadeModal('Cushion Sissy')">
+            Buy
+          </button>
+          <button class="btn" onclick="addToWishlist('Cushion Sissy')">
+            ❤️ Wishlist
+          </button>
+        </div>
+      </div>
+      <div class="card" data-kategori="eyes">
+        <img src="image/mascara.jpg" alt="Mascara Sissy" />
+        <h3>Mascara Sissy</h3>
+        <p>Rp 80.000</p>
+        <p class="desc">
+          A mascara with a waterproof formula that gives dramatic volume to
+          lashes.
+        </p>
+        <div class="button-group">
+          <button class="btn" onclick="addToCart('Mascara Sissy', 80000)">
+            Buy
+          </button>
+          <button class="btn" onclick="addToWishlist('Mascara Sissy')">
+            ❤️ Wishlist
+          </button>
+        </div>
+      </div>
+      <div class="card" data-kategori="eyes">
+        <img src="image/eyeliner.jpg" alt="Eyeliner Sissy" />
+        <h3>Eyeliner Sissy</h3>
+        <p>Rp 60.000</p>
+        <p class="desc">
+          Waterproof eyeliner that defines and enhances your eye shape.
+        </p>
+        <div class="button-group">
+          <button class="btn" onclick="addToCart('Eyeliner Sissy', 60000)">
+            Buy
+          </button>
+          <button class="btn" onclick="addToWishlist('Eyeliner Sissy')">
+            ❤️ Wishlist
+          </button>
+        </div>
+      </div>
+      <div class="card" data-kategori="eyes">
+        <img src="image/pallete eye.jpg" alt="Eyeshadow Palette Sissy" />
+        <h3>Eyeshadow Palette Sissy</h3>
+        <p>Rp 160.000</p>
+        <p class="desc">
+          Versatile eyeshadow palette with vibrant colors for every look.
+        </p>
+        <div class="button-group">
+          <button
+            class="btn"
+            onclick="addToCart('Eyeshadow Palette Sissy', 160000)"
+          >
+            Buy
+          </button>
+          <button
+            class="btn"
+            onclick="addToWishlist('Eyeshadow Palette Sissy')"
+          >
+            ❤️ Wishlist
+          </button>
+        </div>
+      </div>
+      <div class="card new" data-kategori="eyes">
+        <span class="badge-new">NEW</span>
+        <img src="image/fake eyelashes.jpg" alt="Fake Eyelashes Sissy" />
+        <h3>Fake Eyelashes Sissy</h3>
+        <p>Rp 500.000</p>
+        <p class="desc">
+          Reusable, lightweight lashes that enhance volume for dramatic eyes.
+        </p>
+        <div class="button-group">
+          <button
+            class="btn"
+            onclick="addToCart('Fake Eyelashes Sissy', 500000)"
+          >
+            Buy
+          </button>
+          <button class="btn" onclick="addToWishlist('Fake Eyelashes Sissy')">
+            ❤️ Wishlist
+          </button>
+        </div>
+      </div>
+      <div class="card" data-kategori="face">
+        <img src="image/foundation.jpg" alt="Foundation Sissy" />
+        <h3>Foundation Sissy</h3>
+        <p>Rp 150.000</p>
+        <p class="desc">
+          Lightweight foundation with full coverage, suitable for all skin
+          types.
+        </p>
+        <div class="button-group">
+          <button class="btn" onclick="openShadeModal('Foundation Sissy')">
+            Buy
+          </button>
+          <button class="btn" onclick="addToWishlist('Foundation Sissy')">
+            ❤️ Wishlist
+          </button>
+        </div>
+      </div>
+      <div class="card" data-kategori="face">
+        <img src="image/concealer.jpg" alt="Concealer Sissy" />
+        <h3>Concealer Sissy</h3>
+        <p>Rp 100.000</p>
+        <p class="desc">
+          A high coverage concealer that stays light under eyes and blemishes.
+          Not easily creasing.
+        </p>
+        <div class="button-group">
+          <button class="btn" onclick="openShadeModal('Concealer Sissy')">
+            Buy
+          </button>
+          <button class="btn" onclick="addToWishlist('Concealer Sissy')">
+            ❤️ Wishlist
+          </button>
+        </div>
+      </div>
+      <div class="card" data-kategori="face">
+        <img src="image/loose pow.jpg" alt="Loose Powder Sissy" />
+        <h3>Loose Powder Sissy</h3>
+        <p>Rp 110.000</p>
+        <p class="desc">
+          A loose powder that locks in makeup for up to 8 hours without drying
+          out. Gives a smooth effect.
+        </p>
+        <div class="button-group">
+          <button class="btn" onclick="addToCart('Loose Powder Sissy', 110000)">
+            Buy
+          </button>
+          <button class="btn" onclick="addToWishlist('Loose Powder Sissy')">
+            ❤️ Wishlist
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About Us</h2>
+      <p>
+        Sissy Beauty Store is an online store that presents the best beauty
+        products from the Sissy brand. We believe that everyone deserves to look
+        stunning at affordable prices and the best quality. All products are
+        carefully curated to ensure your satisfaction and trust. Thank you for
+        choosing us!
+      </p>
+    </section>
+
+    <section id="testimoni" class="testimonial-section">
+      <h2 class="pink-heading">What Our Customers Say 💬</h2>
+      <div class="testimonial-container">
+        <div class="testimonial">
+          <p>
+            "I love the lip tint! Super long lasting and soft on my lips 😍"
+          </p>
+          <strong>– Ahyeon, Jakarta</strong>
+        </div>
+        <div class="testimonial">
+          <p>
+            "Produk-produk Sissy tuh nggak pernah gagal! Cushion-nya juara."
+          </p>
+          <strong>– Hanni, Bandung</strong>
+        </div>
+        <div class="testimonial">
+          <p>
+            "Fast delivery and amazing customer service. Highly recommended!"
+          </p>
+          <strong>– Carmen, Surabaya</strong>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Sissy Beauty Store</p>
+      <p>
+        📞 WhatsApp:
+        <a href="https://wa.me/6289501544089" class="pink-link"
+          >0895 0154 4089</a
+        >
+        | 📧 Email:
+        <a href="mailto:sissybeauty@email.com" class="pink-link"
+          >sissybeauty@email.com</a
+        >
+        | 📷 Instagram:
+        <a
+          href="https://instagram.com/sissybeauty"
+          target="_blank"
+          class="pink-link"
+          >@sissybeauty</a
+        >
+      </p>
+    </footer>
+
+    <!-- Modal untuk Pilihan Shade -->
+    <div id="shadeModal" class="shade-modal">
+      <div class="shade-modal-content">
+        <span class="close" onclick="closeShadeModal()">&times;</span>
+        <h3 id="shadeTitle">Select Your Shade</h3>
+
+        <select id="shadeSelect" class="shade-select">
+          <option value="">-- Choose Shade --</option>
+          <option value="Light">Light</option>
+          <option value="Medium">Medium</option>
+          <option value="Tan">Tan</option>
+          <option value="Dark">Dark</option>
+        </select>
+
+        <button class="btn" onclick="confirmShade()">Confirm Shade</button>
+      </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6289501544089" target="_blank" class="whatsapp-btn"
+      >💬</a
+    >
+
+    <script src="script.js"></script>
+    <!-- CART POPUP -->
+    <div id="cartModal" class="shade-modal">
+      <div class="shade-modal-content cart-modal-content">
+        <span class="close" onclick="closeModal('cartModal')">&times;</span>
+        <h2>Your Shopping Cart</h2>
+        <ul id="cart-items"></ul>
+        <p><strong>Total:</strong> Rp <span id="total-price">0</span></p>
+        <button class="btn" onclick="checkoutWhatsApp()">
+          Checkout via WhatsApp
+        </button>
+        <button class="btn" onclick="clearCart()">Clear Cart</button>
+      </div>
+    </div>
+
+    <!-- WISHLIST POPUP -->
+    <div id="wishlistModal" class="shade-modal">
+      <div class="shade-modal-content cart-modal-content">
+        <span class="close" onclick="closeModal('wishlistModal')">&times;</span>
+        <h2>Your Wishlist</h2>
+        <ul id="wishlist-items"></ul>
+      </div>
+    </div>
+  </body>
+</html>
